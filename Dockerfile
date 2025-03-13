@@ -23,6 +23,10 @@ RUN apt-get update && apt-get install -y \
 # Install pipenv for managing Python dependencies
 RUN pip3 install pipenv
 
+# Display Java and Gradle versions at container startup (for debugging)
+RUN java -version
+RUN ./gradlew -v
+
 # Install Chromedriver
 RUN curl -sSL https://chromedriver.storage.googleapis.com/113.0.5672.63/chromedriver_linux64.zip -o chromedriver.zip \
     && unzip chromedriver.zip \
