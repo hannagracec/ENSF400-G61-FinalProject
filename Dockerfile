@@ -42,3 +42,8 @@ EXPOSE 8080
 
 # Command to run the application
 CMD ["./gradlew", "apprun"]
+
+
+# Add a health check to verify that the app is running
+HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
+  CMD curl --fail http://localhost:8080 || exit 1
