@@ -43,6 +43,9 @@ EXPOSE 8080
 # Command to run the application
 CMD ["./gradlew", "apprun"]
 
+RUN curl -s https://get.sdkman.io | bash \
+    && source "$HOME/.sdkman/bin/sdkman-init.sh" \
+    && sdk install gradle 7.0
 
 # Add a health check to verify that the app is running
 HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
